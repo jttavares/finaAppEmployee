@@ -1,0 +1,9 @@
+.link-active {
+  background-color: #c42026;
+  color: #fff;
+  border-bottom: 2px solid #000;
+}
+
+.pl-3 {
+  padding-left: 3rem;
+}/*# sourceMappingURL=employees.component.css.map */

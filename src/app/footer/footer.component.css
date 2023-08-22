@@ -1,0 +1,15 @@
+p {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 1rem 0;
+  position: fixed;
+  bottom: 0;
+  background-color: #0d5680;
+  text-align: center;
+}
+p a {
+  color: #fff;
+}/*# sourceMappingURL=footer.component.css.map */

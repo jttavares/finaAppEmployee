@@ -1,0 +1,29 @@
+@use '../../variable'
+
+.nav
+  // background-color: variable.$grayCustom
+
+
+a
+  color: variable.$bluePrimary !important
+  // color: variable.$magentaYear
+  &.navbar-brand
+    font-size: 2rem
+
+.link-active
+  font-weight: bold
+  color: variable.$bluePrimary
+  // color: variable.$magentaYear
+  border-bottom: 2px solid variable.$bluePrimary
+  // border-bottom: 2px solid variable.$magentaYear
+  transition: opacity 1s ease-in-out
+
+img
+  width: 80px
+  // background-color: variable.$grayCustom
+
+@media(min-width:350px)
+  a
+    &.nav-link
+      font-size: 1rem !important
+      padding-right: 0

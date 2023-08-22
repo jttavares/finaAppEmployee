@@ -1,0 +1,35 @@
+@media (min-width: 350px) {
+  .card-title {
+    font-size: 1rem;
+  }
+  .card-text {
+    font-size: 1rem;
+  }
+}
+img {
+  min-height: 400px;
+  height: 400px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+@media (min-width: 762px) {
+  .card-title {
+    font-size: 2rem;
+  }
+  .card-text {
+    font-size: 1.5rem;
+  }
+  .card-body {
+    min-height: 600px;
+  }
+}
+img {
+  min-height: 600px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}/*# sourceMappingURL=contact.component.css.map */

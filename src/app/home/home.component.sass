@@ -1,0 +1,39 @@
+@use '../../variable'
+
+@media (min-width:350px)
+  .card
+    min-height: 100vh
+    &-img-overlay
+      // color: variable.$grayCustom
+    &-title
+      margin-top: 5rem
+    &-img
+      opacity: 0.6
+      min-height: 70% !important
+      height: 600px !important
+      object-fit: cover
+      object-position: 15% 100%
+
+
+
+
+@media (min-width:762px)
+  .card
+
+    &-img-overlay
+      margin: 6rem 0 0 2rem
+
+    &-title
+      margin-top: 30rem
+
+    &-text
+      padding: 2rem !important
+
+    &-img
+      opacity: 0.6
+      min-height: 1000px !important
+
+
+
+
+

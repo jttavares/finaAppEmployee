@@ -1,0 +1,31 @@
+<section class="employees col-12 d-flex flex-wrap justify-content-around p-md-5" >
+  <div class="card justify-content-center mb-5 ml-3 col-xs-12 col-sm-12 col-md-3 " *ngFor="let employee of employees$ | async; let i = index">
+    <div class="card-header d-flex justify-content-center">
+      <img class="card-img-top" [src]="employee.foto" alt="Card image cap">
+
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{employee.nome}} {{employee.sobrenome}}</h5>
+      <p class="card-text">
+        Sexo: {{employee.genero}} Idade: {{employee.idade}}, Cabelos: {{employee.corCabelo}}
+      </p>
+      <p class="card-text">{{employee.endereco}}</p>
+      <p class="card-text">{{employee.telefone}}</p>
+      <p class="card-text">Salário: {{employee.salario}}</p>
+
+    </div>
+    <div class="card-footer text-right">
+      <p (click)="openControl(i)">...</p>
+      <div class="d-flex justify-content-end" *ngIf="showControls && indexControl == i">
+        <fa-icon class="mr-1" data-toggle="tooltip" data-placement="top" title="{{tooltips.editar}}" [icon]="faEdit" (click)="update(employee)"></fa-icon>
+
+        <fa-icon data-toggle="tooltip" data-placement="top" title="{{tooltips.excluir}}" [icon]="faDelete" (click)="delete(employee)"></fa-icon>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="crud" *ngIf="selectedEmployee !== undefined" [ngClass]="{'showForm': selectedEmployee !== undefined}">
+ <app-cadastroEmployees *ngIf="selectedEmployee !== undefined" [employeeToEdit]="selectedEmployee" [actionToPerform]="actionToPerform" [keyToUpdate]="keyToUpdate" (closeCadastroForm)="finishedCrud()"></app-cadastroEmployees>
+</section>
