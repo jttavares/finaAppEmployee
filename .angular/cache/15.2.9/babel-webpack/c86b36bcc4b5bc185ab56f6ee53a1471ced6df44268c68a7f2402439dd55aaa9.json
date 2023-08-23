@@ -1,1 +1,0 @@
-{"ast":null,"code":"export const defaultEmployee = {\n  id: \"\",\n  salario: \"0\",\n  idade: 1,\n  genero: \"m\",\n  nome: \"\",\n  sobrenome: \"\",\n  telefone: \"\",\n  endereco: \"\",\n  corCabelo: \"\",\n  foto: \"\"\n};","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
