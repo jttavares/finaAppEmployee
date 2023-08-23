@@ -93,11 +93,13 @@ export class CadastroEmployeesComponent implements OnInit {
   submit(){
     const employeesDatabaseRef = firebaseDatabase.ref(this._database, 'empregados');
 
+    const salario= this.formCadastro.value.salario?.replaceAll('R$','').replaceAll('$','');
+    this.formCadastro.value.salario = `R$ ${salario}`;
+
     if(this.actionToPerform === "Salvar"){
       const id =btoa(`${this.formCadastro.value.nome}${this.formCadastro.value.sobrenome}`);
 
       this.formCadastro.value.id = id;
-      this.formCadastro.value.salario = `R$ ${this.formCadastro.value.salario}`;
 
 
       try {
@@ -121,7 +123,6 @@ export class CadastroEmployeesComponent implements OnInit {
 
 
     else if(this.actionToPerform === "Atualizar"){
-      this.formCadastro.value.salario = `R$ ${this.formCadastro.value.salario}`;
 
       try {
         const employeeRef = firebaseDatabase.ref(this._database, `empregados/${this.keyToUpdate}` )

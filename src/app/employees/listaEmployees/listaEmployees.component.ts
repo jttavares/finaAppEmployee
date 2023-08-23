@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import * as firebaseDatabase from "@angular/fire/database";
-import { Observable,  take, BehaviorSubject, Subscription, tap} from 'rxjs';
+import { Observable,  take, BehaviorSubject, Subscription, tap, map} from 'rxjs';
 import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons'
 import Swal from "sweetalert2";
 
@@ -55,6 +55,7 @@ export class ListaEmployeesComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getAllEmployees();
+    // this.employees$.next(employees);
   }
 
   update(employee:Employee):void{
@@ -66,7 +67,7 @@ export class ListaEmployeesComponent implements OnInit, OnDestroy {
   }
 
   openControl(index:number){
-    this.showControls=true;
+    this.showControls=!this.showControls;
     this.indexControl=index;
 
   }
@@ -118,27 +119,20 @@ export class ListaEmployeesComponent implements OnInit, OnDestroy {
     this.getAllEmployees();
   }
 
-
   public getAllEmployees():Observable<Employee[]>{
-   this.subscriptions.push(firebaseDatabase.objectVal<Employee[]>(this.employeesDatabaseRef)
-    .pipe(
-      take(1),
-      tap(employes=> {
-        for (const key in employes) {
-          this.databaseKeysRef[employes[key].id] = key;
-        }
-      }),
-      )
-    .subscribe((response:Employee[])=>{
-      const array = Object.values(response)
-      this.employees$.next(array);
+   firebaseDatabase.onValue(this.employeesDatabaseRef,snapshot=>{
+    const snapVal = snapshot.val();
+    for (const key in snapVal) {
+      this.databaseKeysRef[snapVal[key].id] = key;
+    }
+    const values:Employee[] = Object.values(snapVal);
+    this.employees$.next(values);
+   })
 
-      this.unsubscribe();
-    }))
     return this.employees$.asObservable();
+   }
+ 
 
-
-  }
   private unsubscribe(){
     this.subscriptions.forEach(sub=> sub.unsubscribe())
   }
